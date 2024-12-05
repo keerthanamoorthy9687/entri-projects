@@ -1,29 +1,14 @@
-//reference of the quotes generator
-let quotes=document.getElementById("quotes-text");
-let author=document.getElementById("quotes-author");
-let newQuoteBtn =document.getElementById("new-quotes");
+// const userName=prompt("Enter your Name ")
 
-// Fetch and display a new quote
+document.getElementById('signInForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent actual form submission
 
-async function getQuotes() {
-    try{
-        const response=await fetch ('https://dummyjson.com/quotes/random');
-        let data=await response.json()
-        console.log("response of the data",data)
-        quotes.textContent=`"${data.quote}"`
-        author.textContent=`----${data.author||'unknown'}`
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-    }catch(error){
-        console.error('Error fetching the quote:', error);
-        quoteText.textContent = 'Oops! Could not fetch a quote. Please try again.';
-        authorText.textContent = '';
-
+    if (email && password) {
+        alert(`Welcome, ${email}! You have successfully signed in.`);
+    } else {
+        alert('Please fill in both fields.');
     }
-   
-    
-}
-// Add event listener to the button
-newQuoteBtn.addEventListener('click',getQuotes)
-
-// Fetch the initial quote on page load
-getQuotes()
+});
